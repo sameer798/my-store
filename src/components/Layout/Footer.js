@@ -1,8 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
-import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa'; // Import social media icons
-
-// Optional: Import custom CSS for styling
+import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa'; // Import social media icons
 import './Footer.css';
 
 const Footer = () => {
@@ -31,6 +29,7 @@ const Footer = () => {
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
             </div>
           </Col>
         </Row>
