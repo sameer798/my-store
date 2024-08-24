@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Navbar, Nav, Button } from "react-bootstrap";
 import Banner from "./Banner";
+import cartContext from "../store/cart-context";
 
-const Header = () => {
+const Header = (props) => {
+ const ctx = useContext(cartContext)
+ const numberOfItem = ctx.cartItems.reduce((currNum, item)=>{
+  return currNum + item.quantity
+ },0)
   return (
     <header>
       <Navbar className="fixed-top" style={{ backgroundColor: "#0D0E10"}} expand="lg">
@@ -24,7 +29,7 @@ const Header = () => {
               </Nav.Link>
             </Nav>
             <div className="d-flex align-items-center">
-              <Button style={{ backgroundColor: "#D9008D" }}>Cart</Button>
+              <Button style={{ backgroundColor: "#D9008D" }} onClick={props.onShowCart}>Cart</Button>
               <span
                 style={{
                   position: "relative",
@@ -33,7 +38,7 @@ const Header = () => {
                   fontWeight: "600"
                 }}
               >
-                2
+                {numberOfItem}
               </span>
             </div>
           </Navbar.Collapse>
