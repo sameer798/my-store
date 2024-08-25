@@ -1,17 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import App from "./App";
+import Root from "./components/Root";
+import About from "./pages/About";
+import reportWebVitals from "./reportWebVitals";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ContextProvider from "./components/store/ContextProvider";
 
 // import '../node_modules/react-bootstrap/dist/react-bootstrap';
 
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const router = createBrowserRouter([
+  { path: "/", element: <App />,
+    children: [
+      { path: "/", element: <Root/> },
+      { path: "/about", element: <About /> },
+    ]
+   },
+]);
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <ContextProvider>
+      <RouterProvider router={router} />
+    </ContextProvider>
   </React.StrictMode>
 );
 

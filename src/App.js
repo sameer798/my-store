@@ -1,10 +1,12 @@
 import Header from "./components/Layout/Header";
-import ProductList from "./components/Layout/ProductList";
-import CartButton from "./components/Layout/CartButton";
 import Footer from "./components/Layout/Footer";
+import {Outlet} from 'react-router-dom'
 import Cart from "./components/Cart/Cart";
 import { useState } from "react";
-import ContextProvider from "./components/store/ContextProvider";
+import CartButton from './components/Layout/CartButton'
+
+
+
 
 function App() {
   const [showCart, setShowCart] = useState(true);
@@ -16,17 +18,13 @@ function App() {
   const cartHideHandler = () => {
     setShowCart(true);
   };
-
   return (
     <>
-      <ContextProvider>
-        <Header onShowCart={cartShowHandler} />
-        <main>
-          {!showCart && <Cart onHideCart={cartHideHandler} />}
-          <ProductList />
-          <CartButton onShowCart={cartShowHandler} />
-        </main>
-      </ContextProvider>
+       <Header onShowCart={cartShowHandler}/>
+       {!showCart && <Cart  onHideCart={cartHideHandler}/>}
+      
+       <Outlet/>
+       <CartButton onShowCart={cartShowHandler} />
       <Footer />
     </>
   );

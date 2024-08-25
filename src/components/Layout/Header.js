@@ -1,16 +1,21 @@
 import React, { useContext } from "react";
 import { Container, Navbar, Nav, Button } from "react-bootstrap";
 import Banner from "./Banner";
+import { NavLink } from "react-router-dom";
 import cartContext from "../store/cart-context";
 
 const Header = (props) => {
- const ctx = useContext(cartContext)
- const numberOfItem = ctx.cartItems.reduce((currNum, item)=>{
-  return currNum + item.quantity
- },0)
+  const ctx = useContext(cartContext);
+  const numberOfItem = ctx.cartItems.reduce((currNum, item) => {
+    return currNum + item.quantity;
+  }, 0);
   return (
     <header>
-      <Navbar className="fixed-top" style={{ backgroundColor: "#0D0E10"}} expand="lg">
+      <Navbar
+        className="fixed-top"
+        style={{ backgroundColor: "#0D0E10" }}
+        expand="lg"
+      >
         <Container style={{ height: "4rem", position: "relative" }}>
           <Navbar.Brand href="/" style={{ fontWeight: 600, color: "#D9008D" }}>
             My Store
@@ -24,18 +29,33 @@ const Header = (props) => {
               <Nav.Link href="/store" style={{ color: "#8B8B8C" }}>
                 Store
               </Nav.Link>
-              <Nav.Link href="/about" style={{ color: "#8B8B8C" }}>
+
+              <Nav.Link
+                as={NavLink}
+                to="/about"
+                className="nav-link"
+                style={({ isActive }) => ({
+                  color: isActive ? "#1d238c" : "#8B8B8C",
+                  fontWeight: isActive ? "bold" : "normal",
+                })}
+               
+              >
                 About
               </Nav.Link>
             </Nav>
             <div className="d-flex align-items-center">
-              <Button style={{ backgroundColor: "#D9008D" }} onClick={props.onShowCart}>Cart</Button>
+              <Button
+                style={{ backgroundColor: "#D9008D" }}
+                onClick={props.onShowCart}
+              >
+                Cart
+              </Button>
               <span
                 style={{
                   position: "relative",
                   color: "#D9008D",
                   marginLeft: "10px",
-                  fontWeight: "600"
+                  fontWeight: "600",
                 }}
               >
                 {numberOfItem}
@@ -44,7 +64,7 @@ const Header = (props) => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Banner/>
+      <Banner />
     </header>
   );
 };
