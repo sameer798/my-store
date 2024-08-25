@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Container, Navbar, Nav, Button } from "react-bootstrap";
 import Banner from "./Banner";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import cartContext from "../store/cart-context";
 
 const Header = (props) => {
@@ -17,16 +17,32 @@ const Header = (props) => {
         expand="lg"
       >
         <Container style={{ height: "4rem", position: "relative" }}>
-          <Navbar.Brand href="/" style={{ fontWeight: 600, color: "#D9008D" }}>
+          <Navbar.Brand as={Link} to="/" style={{ fontWeight: 600, color: "#D9008D" }}>
             My Store
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/" style={{ color: "#8B8B8C" }}>
+              <Nav.Link
+                href="/"
+                as={NavLink}
+                to="/home"
+                className="nav-link"
+                style={({ isActive }) => ({
+                  color: isActive ? "#1d238c" : "#8B8B8C",
+                  fontWeight: isActive ? "bold" : "normal",
+                })}
+              >
                 Home
               </Nav.Link>
-              <Nav.Link href="/store" style={{ color: "#8B8B8C" }}>
+              <Nav.Link href="/home"
+                as={NavLink}
+                to="/store"
+                className="nav-link"
+                style={({ isActive }) => ({
+                  color: isActive ? "#1d238c" : "#8B8B8C",
+                  fontWeight: isActive ? "bold" : "normal",
+                })}>
                 Store
               </Nav.Link>
 
@@ -38,7 +54,6 @@ const Header = (props) => {
                   color: isActive ? "#1d238c" : "#8B8B8C",
                   fontWeight: isActive ? "bold" : "normal",
                 })}
-               
               >
                 About
               </Nav.Link>

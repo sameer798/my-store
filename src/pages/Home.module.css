@@ -1,0 +1,5 @@
+.carousel-container {
+    margin: 0 auto; /* Center the carousel horizontally */
+    padding: 0 3rem; /* Add 3rem padding on both left and right */
+    max-width: 90%; /* Optional: control the maximum width of the carousel */
+}

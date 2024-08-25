@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
+import ProductList from "./components/Layout/ProductList";
 import App from "./App";
 import Root from "./components/Root";
+import Home from "./pages/Home";
 import About from "./pages/About";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -17,6 +18,8 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Root/> },
       { path: "/about", element: <About /> },
+      {path: '/home', element: <Home/>},
+      {path: '/store', element: <ProductList/>}
     ]
    },
 ]);
