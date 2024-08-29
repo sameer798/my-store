@@ -7,7 +7,6 @@ const Root = () => {
   return (
     <>
     <main>
-     
       <ProductList />
     </main>
     </>

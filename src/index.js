@@ -8,6 +8,7 @@ import About from "./pages/About";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ContextProvider from "./components/store/ContextProvider";
+import ProductPage from "./pages/ProductPage";
 
 // import '../node_modules/react-bootstrap/dist/react-bootstrap';
 
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
       {path: '/home', element: <Home/>},
       {path: '/store', element: <ProductList/>},
       {path: '/contact', element: <ContactUs/>},
+      {path: '/product-details/:productId', element: <ProductPage/>},
 
     ]
    },

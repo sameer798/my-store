@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from "react-bootstrap";
 import classes from './ProductList.module.css';
 import cartContext from '../store/cart-context';
 import { useContext } from 'react';
+
 
 
 const ProductList = () => {
@@ -17,7 +19,7 @@ const ctx = useContext(cartContext);
       {ctx.items.map(item => (
         <Col md={3} key={item.id} className="mb-4">
           <div className={classes.item}>
-            <img src={item.image} alt={item.title} />
+            <Link to={`/product-details/${item.id}`}><img src={item.image} alt={item.title} /></Link>
             <h3>{item.title}</h3>
             <p>{item.description}</p>
             <p>{item.price}₹</p>
