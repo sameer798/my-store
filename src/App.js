@@ -6,8 +6,6 @@ import { useState } from "react";
 import CartButton from './components/Layout/CartButton'
 
 
-
-
 function App() {
   const [showCart, setShowCart] = useState(true);
 

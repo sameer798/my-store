@@ -57,6 +57,16 @@ const Header = (props) => {
               >
                 About
               </Nav.Link>
+
+              <Nav.Link
+                as={NavLink}
+                to="/contact"
+                className="nav-link"
+                style={({ isActive }) => ({
+                  color: isActive ? "#1d238c" : "#8B8B8C",
+                  fontWeight: isActive ? "bold" : "normal",
+                })}
+              >ContactUs</Nav.Link>
             </Nav>
             <div className="d-flex align-items-center">
               <Button

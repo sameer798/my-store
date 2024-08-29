@@ -12,6 +12,7 @@ import ContextProvider from "./components/store/ContextProvider";
 // import '../node_modules/react-bootstrap/dist/react-bootstrap';
 
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import ContactUs from "./pages/ContactUs";
 
 const router = createBrowserRouter([
   { path: "/", element: <App />,
@@ -19,7 +20,9 @@ const router = createBrowserRouter([
       { path: "/", element: <Root/> },
       { path: "/about", element: <About /> },
       {path: '/home', element: <Home/>},
-      {path: '/store', element: <ProductList/>}
+      {path: '/store', element: <ProductList/>},
+      {path: '/contact', element: <ContactUs/>},
+
     ]
    },
 ]);
