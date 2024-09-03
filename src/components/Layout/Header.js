@@ -3,12 +3,23 @@ import { Container, Navbar, Nav, Button } from "react-bootstrap";
 import Banner from "./Banner";
 import { NavLink, Link } from "react-router-dom";
 import cartContext from "../store/cart-context";
+import AuthContext from "../store/auth-context";
+
+
 
 const Header = (props) => {
+  const authCtx = useContext(AuthContext)
   const ctx = useContext(cartContext);
   const numberOfItem = ctx.cartItems.reduce((currNum, item) => {
     return currNum + item.quantity;
   }, 0);
+
+
+const logoutHandler = (e) => {
+  e.preventDefault();
+  authCtx.logout()
+}
+
   return (
     <header>
       <Navbar
@@ -69,6 +80,17 @@ const Header = (props) => {
               >ContactUs</Nav.Link>
             </Nav>
             <div className="d-flex align-items-center">
+
+            {!authCtx.isLoggedIn ? <Nav.Link
+                as={NavLink}
+                to="/login"
+                className="nav-link m-2"
+                style={({ isActive }) => ({
+                  color: isActive ? "#1d238c" : "#8B8B8C",
+                  fontWeight: isActive ? "bold" : "normal",
+                })}
+              >Login</Nav.Link> : <Button style={{marginRight: "5px"}} onClick={logoutHandler}>Logout</Button>}
+
               <Button
                 style={{ backgroundColor: "#D9008D" }}
                 onClick={props.onShowCart}

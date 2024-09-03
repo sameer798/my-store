@@ -3,7 +3,7 @@ import Footer from "./components/Layout/Footer";
 import {Outlet} from 'react-router-dom'
 import Cart from "./components/Cart/Cart";
 import { useState } from "react";
-import CartButton from './components/Layout/CartButton'
+// import CartButton from './components/Layout/CartButton'
 
 
 function App() {
@@ -20,9 +20,9 @@ function App() {
     <>
        <Header onShowCart={cartShowHandler}/>
        {!showCart && <Cart  onHideCart={cartHideHandler}/>}
-      
+      {/* <CartButton onShowCart={cartShowHandler} /> */}
        <Outlet/>
-       <CartButton onShowCart={cartShowHandler} />
+       
       <Footer />
     </>
   );
